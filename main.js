@@ -40,6 +40,8 @@ const deleteIssue = (id) => {
 
 const fetchIssues = () => {
 	const issues = JSON.parse(localStorage.getItem('issues'));
+	// display the issues quantity
+	document.getElementById('total-issues').innerText = issues.length;
 	const issuesList = document.getElementById('issuesList');
 	issuesList.innerHTML = '';
 
