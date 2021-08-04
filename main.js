@@ -31,6 +31,11 @@ const closeIssue = (id) => {
 	fetchIssues();
 };
 
+const closeIssueCount = (issues) => {
+	const closedIssue = issues.filter((issue) => issue.status === 'Closed');
+	document.getElementById('closed-issues').innerText = closedIssue.length;
+};
+
 const deleteIssue = (id) => {
 	const issues = JSON.parse(localStorage.getItem('issues'));
 	const remainingIssues = issues.filter((issue) => issue.id != id);
@@ -41,6 +46,8 @@ const deleteIssue = (id) => {
 // fetch issues when update dom
 const fetchIssues = () => {
 	const issues = JSON.parse(localStorage.getItem('issues'));
+	closeIssueCount(issues);
+
 	// display the issues quantity
 	document.getElementById('total-issues').innerText = issues.length;
 	const issuesList = document.getElementById('issuesList');
